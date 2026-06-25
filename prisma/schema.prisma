@@ -27,6 +27,24 @@ enum AccountUserStatus {
   REMOVED
 }
 
+enum ResourceStatus {
+  AVAILABLE
+  BUSY
+  OFFLINE
+  ON_LEAVE
+  DEACTIVATED
+}
+
+enum Weekday {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
 model Account {
   id        String      @id @default(uuid())
   type      AccountType
@@ -37,6 +55,8 @@ model Account {
   updatedAt DateTime    @updatedAt
 
   users     AccountUser[]
+  resources Resource[]
+  skills    Skill[]
 }
 
 model UserProfile {
@@ -50,6 +70,7 @@ model UserProfile {
   updatedAt     DateTime @updatedAt
 
   accounts      AccountUser[]
+  resources     Resource[]
 }
 
 model AccountUser {
@@ -85,4 +106,92 @@ model RolePermission {
   permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
 
   @@unique([role, permissionId])
+}
+
+model Skill {
+  id        String   @id @default(uuid())
+  accountId String
+  name      String
+  color     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  account   Account         @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  resources ResourceSkill[]
+
+  @@unique([accountId, name])
+  @@index([accountId])
+}
+
+model Resource {
+  id             String         @id @default(uuid())
+  accountId      String
+  userProfileId  String?
+  photoUrl       String?
+  name           String
+  email          String?
+  phone          String?
+  title          String?
+  status         ResourceStatus @default(AVAILABLE)
+  isActive       Boolean        @default(true)
+  locationLabel  String?
+  latitude       Decimal?       @db.Decimal(10, 7)
+  longitude      Decimal?       @db.Decimal(10, 7)
+  lastSeenAt     DateTime?
+  notes          String?
+  deactivatedAt DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  account        Account                @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  userProfile    UserProfile?           @relation(fields: [userProfileId], references: [id], onDelete: SetNull)
+  skills         ResourceSkill[]
+  availability   ResourceAvailability[]
+  statusEvents   ResourceStatusEvent[]
+
+  @@index([accountId, status])
+  @@index([accountId, isActive])
+  @@index([userProfileId])
+}
+
+model ResourceSkill {
+  resourceId String
+  skillId    String
+  createdAt  DateTime @default(now())
+
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  skill      Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([resourceId, skillId])
+  @@index([skillId])
+}
+
+model ResourceAvailability {
+  id         String   @id @default(uuid())
+  resourceId String
+  weekday    Weekday
+  startTime  String
+  endTime    String
+  timezone   String   @default("UTC")
+  isWorking  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@unique([resourceId, weekday])
+  @@index([resourceId])
+}
+
+model ResourceStatusEvent {
+  id         String         @id @default(uuid())
+  resourceId String
+  status     ResourceStatus
+  note       String?
+  createdBy  String?
+  createdAt  DateTime       @default(now())
+
+  resource   Resource       @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@index([resourceId, createdAt])
 }

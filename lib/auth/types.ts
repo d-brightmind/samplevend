@@ -8,6 +8,8 @@ export type Permission =
   | "account:manage"
   | "users:invite"
   | "users:remove"
+  | "resources:manage"
+  | "resources:deactivate"
   | "jobs:create"
   | "jobs:assign"
   | "jobs:view_all"
@@ -25,13 +27,15 @@ export const rolePermissions: Record<UserRole, Permission[]> = {
     "account:manage",
     "users:invite",
     "users:remove",
+    "resources:manage",
+    "resources:deactivate",
     "jobs:create",
     "jobs:assign",
     "jobs:view_all",
     "resources:view",
     "billing:manage"
   ],
-  DISPATCHER: ["jobs:create", "jobs:assign", "jobs:view_all", "resources:view"],
+  DISPATCHER: ["jobs:create", "jobs:assign", "jobs:view_all", "resources:view", "resources:manage"],
   RESOURCE: ["jobs:view_assigned", "jobs:update_status", "availability:manage"],
   CLIENT: ["requests:create", "requests:view_own", "invoices:view_own"]
 };

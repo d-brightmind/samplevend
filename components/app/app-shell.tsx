@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Activity, BriefcaseBusiness, CalendarClock, MapPinned, ShieldCheck, Users, type LucideIcon } from "lucide-react";
+import { Activity, BriefcaseBusiness, CalendarClock, MapPinned, ShieldCheck, UserRoundCog, Users, type LucideIcon } from "lucide-react";
 import { LogoutButton } from "@/components/app/logout-button";
 import type { SessionContext, UserRole } from "@/lib/auth/types";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,7 @@ type NavItem = {
 const nav: NavItem[] = [
   { href: "/admin", label: "Admin", icon: ShieldCheck, roles: ["ADMIN"] },
   { href: "/dispatch", label: "Dispatch", icon: MapPinned, roles: ["ADMIN", "DISPATCHER"] },
+  { href: "/resources", label: "Resources", icon: UserRoundCog, roles: ["ADMIN", "DISPATCHER"] },
   { href: "/resource", label: "Resource", icon: CalendarClock, roles: ["ADMIN", "DISPATCHER", "RESOURCE"] },
   { href: "/client", label: "Client", icon: BriefcaseBusiness, roles: ["CLIENT"] },
   { href: "/account", label: "Account", icon: Users, roles: ["ADMIN"] }

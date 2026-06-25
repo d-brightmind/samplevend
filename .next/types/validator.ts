@@ -92,6 +92,42 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/(app)/resources/[resourceId]/edit/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/resources/[resourceId]/edit">> = Specific
+  const handler = {} as typeof import("../../app/(app)/resources/[resourceId]/edit/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/(app)/resources/[resourceId]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/resources/[resourceId]">> = Specific
+  const handler = {} as typeof import("../../app/(app)/resources/[resourceId]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/(app)/resources/new/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/resources/new">> = Specific
+  const handler = {} as typeof import("../../app/(app)/resources/new/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/(app)/resources/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/resources">> = Specific
+  const handler = {} as typeof import("../../app/(app)/resources/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/(auth)/forgot-password/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/forgot-password">> = Specific
@@ -204,6 +240,33 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/session">> = Specific
   const handler = {} as typeof import("../../app/api/auth/session/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/resources/[resourceId]/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/resources/[resourceId]">> = Specific
+  const handler = {} as typeof import("../../app/api/resources/[resourceId]/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/resources/[resourceId]/status/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/resources/[resourceId]/status">> = Specific
+  const handler = {} as typeof import("../../app/api/resources/[resourceId]/status/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/resources/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/resources">> = Specific
+  const handler = {} as typeof import("../../app/api/resources/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

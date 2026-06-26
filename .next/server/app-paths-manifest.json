@@ -1,5 +1,9 @@
 {
-  "/api/auth/register/route": "app/api/auth/register/route.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/(auth)/register/page": "app/(auth)/register/page.js"
+  "/(auth)/verify-email/page": "app/(auth)/verify-email/page.js",
+  "/(app)/admin/page": "app/(app)/admin/page.js",
+  "/(app)/dispatch/page": "app/(app)/dispatch/page.js",
+  "/(app)/engagements/page": "app/(app)/engagements/page.js",
+  "/(app)/engagements/new/page": "app/(app)/engagements/new/page.js",
+  "/(app)/resource/page": "app/(app)/resource/page.js"
 }

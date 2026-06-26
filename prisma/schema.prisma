@@ -45,6 +45,15 @@ enum Weekday {
   SUNDAY
 }
 
+enum EngagementStatus {
+  UNSCHEDULED
+  SCHEDULED
+  ASSIGNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
 model Account {
   id        String      @id @default(uuid())
   type      AccountType
@@ -57,6 +66,7 @@ model Account {
   users     AccountUser[]
   resources Resource[]
   skills    Skill[]
+  engagements Engagement[]
 }
 
 model UserProfile {
@@ -148,10 +158,56 @@ model Resource {
   skills         ResourceSkill[]
   availability   ResourceAvailability[]
   statusEvents   ResourceStatusEvent[]
+  engagements    Engagement[]
 
   @@index([accountId, status])
   @@index([accountId, isActive])
   @@index([userProfileId])
+}
+
+model Engagement {
+  id              String           @id @default(uuid())
+  accountId       String
+  resourceId      String?
+  title           String
+  clientName      String
+  clientEmail     String?
+  clientPhone     String?
+  serviceType     String?
+  description     String?
+  status          EngagementStatus @default(UNSCHEDULED)
+  scheduledStart  DateTime?
+  scheduledEnd    DateTime?
+  locationLabel   String?
+  latitude        Decimal?         @db.Decimal(10, 7)
+  longitude       Decimal?         @db.Decimal(10, 7)
+  cancellationReason String?
+  cancelledAt     DateTime?
+  completedAt     DateTime?
+  createdBy       String?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  account         Account          @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  resource        Resource?        @relation(fields: [resourceId], references: [id], onDelete: SetNull)
+  statusEvents    EngagementStatusEvent[]
+
+  @@index([accountId, status])
+  @@index([accountId, scheduledStart])
+  @@index([resourceId, scheduledStart, scheduledEnd])
+}
+
+model EngagementStatusEvent {
+  id           String           @id @default(uuid())
+  engagementId String
+  status       EngagementStatus
+  note         String?
+  createdBy    String?
+  createdAt    DateTime         @default(now())
+
+  engagement   Engagement       @relation(fields: [engagementId], references: [id], onDelete: Cascade)
+
+  @@index([engagementId, createdAt])
 }
 
 model ResourceSkill {

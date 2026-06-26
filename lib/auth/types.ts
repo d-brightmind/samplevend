@@ -10,6 +10,10 @@ export type Permission =
   | "users:remove"
   | "resources:manage"
   | "resources:deactivate"
+  | "engagements:view"
+  | "engagements:manage"
+  | "engagements:assign"
+  | "engagements:cancel"
   | "jobs:create"
   | "jobs:assign"
   | "jobs:view_all"
@@ -29,15 +33,29 @@ export const rolePermissions: Record<UserRole, Permission[]> = {
     "users:remove",
     "resources:manage",
     "resources:deactivate",
+    "engagements:view",
+    "engagements:manage",
+    "engagements:assign",
+    "engagements:cancel",
     "jobs:create",
     "jobs:assign",
     "jobs:view_all",
     "resources:view",
     "billing:manage"
   ],
-  DISPATCHER: ["jobs:create", "jobs:assign", "jobs:view_all", "resources:view", "resources:manage"],
-  RESOURCE: ["jobs:view_assigned", "jobs:update_status", "availability:manage"],
-  CLIENT: ["requests:create", "requests:view_own", "invoices:view_own"]
+  DISPATCHER: [
+    "jobs:create",
+    "jobs:assign",
+    "jobs:view_all",
+    "resources:view",
+    "resources:manage",
+    "engagements:view",
+    "engagements:manage",
+    "engagements:assign",
+    "engagements:cancel"
+  ],
+  RESOURCE: ["jobs:view_assigned", "jobs:update_status", "availability:manage", "engagements:view"],
+  CLIENT: ["requests:create", "requests:view_own", "invoices:view_own", "engagements:view"]
 };
 
 export const dashboardByRole: Record<UserRole, string> = {

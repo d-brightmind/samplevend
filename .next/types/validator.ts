@@ -74,6 +74,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/(app)/dispatch-map/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/dispatch-map">> = Specific
+  const handler = {} as typeof import("../../app/(app)/dispatch-map/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/(app)/dispatch/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/dispatch">> = Specific
@@ -159,6 +168,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/resources">> = Specific
   const handler = {} as typeof import("../../app/(app)/resources/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/(app)/schedule/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/schedule">> = Specific
+  const handler = {} as typeof import("../../app/(app)/schedule/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -281,6 +299,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/api/dispatch-map/assign/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/dispatch-map/assign">> = Specific
+  const handler = {} as typeof import("../../app/api/dispatch-map/assign/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/dispatch-map/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/dispatch-map">> = Specific
+  const handler = {} as typeof import("../../app/api/dispatch-map/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/api/engagements/[engagementId]/assign/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/engagements/[engagementId]/assign">> = Specific
@@ -339,6 +375,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/resources">> = Specific
   const handler = {} as typeof import("../../app/api/resources/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/schedule/assign/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/schedule/assign">> = Specific
+  const handler = {} as typeof import("../../app/api/schedule/assign/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/api/schedule/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/schedule">> = Specific
+  const handler = {} as typeof import("../../app/api/schedule/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

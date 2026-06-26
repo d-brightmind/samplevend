@@ -14,6 +14,10 @@ export type Permission =
   | "engagements:manage"
   | "engagements:assign"
   | "engagements:cancel"
+  | "schedule:view"
+  | "schedule:manage"
+  | "dispatch:view"
+  | "dispatch:assign"
   | "jobs:create"
   | "jobs:assign"
   | "jobs:view_all"
@@ -37,6 +41,10 @@ export const rolePermissions: Record<UserRole, Permission[]> = {
     "engagements:manage",
     "engagements:assign",
     "engagements:cancel",
+    "schedule:view",
+    "schedule:manage",
+    "dispatch:view",
+    "dispatch:assign",
     "jobs:create",
     "jobs:assign",
     "jobs:view_all",
@@ -52,7 +60,11 @@ export const rolePermissions: Record<UserRole, Permission[]> = {
     "engagements:view",
     "engagements:manage",
     "engagements:assign",
-    "engagements:cancel"
+    "engagements:cancel",
+    "schedule:view",
+    "schedule:manage",
+    "dispatch:view",
+    "dispatch:assign"
   ],
   RESOURCE: ["jobs:view_assigned", "jobs:update_status", "availability:manage", "engagements:view"],
   CLIENT: ["requests:create", "requests:view_own", "invoices:view_own", "engagements:view"]

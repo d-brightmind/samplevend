@@ -1,1 +1,228 @@
-{"version":3,"caseSensitive":false,"basePath":"","rewrites":{"beforeFiles":[],"afterFiles":[],"fallback":[]},"redirects":[{"source":"/:path+/","destination":"/:path+","permanent":true,"internal":true,"regex":"^(?:\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*))\\/$"}],"headers":[]}
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/api/engagements/[engagementId]",
+      "regex": "^/api/engagements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPengagementId": "nxtPengagementId"
+      },
+      "namedRegex": "^/api/engagements/(?<nxtPengagementId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/engagements/[engagementId]/assign",
+      "regex": "^/api/engagements/([^/]+?)/assign(?:/)?$",
+      "routeKeys": {
+        "nxtPengagementId": "nxtPengagementId"
+      },
+      "namedRegex": "^/api/engagements/(?<nxtPengagementId>[^/]+?)/assign(?:/)?$"
+    },
+    {
+      "page": "/api/engagements/[engagementId]/status",
+      "regex": "^/api/engagements/([^/]+?)/status(?:/)?$",
+      "routeKeys": {
+        "nxtPengagementId": "nxtPengagementId"
+      },
+      "namedRegex": "^/api/engagements/(?<nxtPengagementId>[^/]+?)/status(?:/)?$"
+    },
+    {
+      "page": "/api/resources/[resourceId]",
+      "regex": "^/api/resources/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPresourceId": "nxtPresourceId"
+      },
+      "namedRegex": "^/api/resources/(?<nxtPresourceId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/resources/[resourceId]/status",
+      "regex": "^/api/resources/([^/]+?)/status(?:/)?$",
+      "routeKeys": {
+        "nxtPresourceId": "nxtPresourceId"
+      },
+      "namedRegex": "^/api/resources/(?<nxtPresourceId>[^/]+?)/status(?:/)?$"
+    },
+    {
+      "page": "/engagements/[engagementId]",
+      "regex": "^/engagements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPengagementId": "nxtPengagementId"
+      },
+      "namedRegex": "^/engagements/(?<nxtPengagementId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/engagements/[engagementId]/edit",
+      "regex": "^/engagements/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPengagementId": "nxtPengagementId"
+      },
+      "namedRegex": "^/engagements/(?<nxtPengagementId>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/resources/[resourceId]",
+      "regex": "^/resources/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPresourceId": "nxtPresourceId"
+      },
+      "namedRegex": "^/resources/(?<nxtPresourceId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/resources/[resourceId]/edit",
+      "regex": "^/resources/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPresourceId": "nxtPresourceId"
+      },
+      "namedRegex": "^/resources/(?<nxtPresourceId>[^/]+?)/edit(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/account",
+      "regex": "^/account(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/account(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/client",
+      "regex": "^/client(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/client(?:/)?$"
+    },
+    {
+      "page": "/dispatch",
+      "regex": "^/dispatch(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dispatch(?:/)?$"
+    },
+    {
+      "page": "/dispatch-map",
+      "regex": "^/dispatch\\-map(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dispatch\\-map(?:/)?$"
+    },
+    {
+      "page": "/engagements",
+      "regex": "^/engagements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/engagements(?:/)?$"
+    },
+    {
+      "page": "/engagements/new",
+      "regex": "^/engagements/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/engagements/new(?:/)?$"
+    },
+    {
+      "page": "/forgot-password",
+      "regex": "^/forgot\\-password(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/forgot\\-password(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/register",
+      "regex": "^/register(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register(?:/)?$"
+    },
+    {
+      "page": "/reset-password",
+      "regex": "^/reset\\-password(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/reset\\-password(?:/)?$"
+    },
+    {
+      "page": "/resource",
+      "regex": "^/resource(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resource(?:/)?$"
+    },
+    {
+      "page": "/resources",
+      "regex": "^/resources(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources(?:/)?$"
+    },
+    {
+      "page": "/resources/new",
+      "regex": "^/resources/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/new(?:/)?$"
+    },
+    {
+      "page": "/schedule",
+      "regex": "^/schedule(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/schedule(?:/)?$"
+    },
+    {
+      "page": "/unauthorized",
+      "regex": "^/unauthorized(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/unauthorized(?:/)?$"
+    },
+    {
+      "page": "/verify-email",
+      "regex": "^/verify\\-email(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/verify\\-email(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

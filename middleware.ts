@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseMiddlewareClient } from "@/lib/supabase/middleware";
 
 const publicRoutes = ["/login", "/register", "/forgot-password", "/reset-password", "/verify-email", "/unauthorized"];
-const protectedPrefixes = ["/admin", "/dispatch", "/resource", "/resources", "/engagements", "/client", "/account"];
+const protectedPrefixes = ["/admin", "/dispatch", "/dispatch-map", "/resource", "/resources", "/engagements", "/schedule", "/client", "/account"];
 
 function isPublicRoute(pathname: string) {
   return publicRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));

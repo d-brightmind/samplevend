@@ -52,6 +52,22 @@
       "namedRegex": "^/api/public/providers/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/api/public/providers/[slug]/booking-options",
+      "regex": "^/api/public/providers/([^/]+?)/booking\\-options(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/api/public/providers/(?<nxtPslug>[^/]+?)/booking\\-options(?:/)?$"
+    },
+    {
+      "page": "/api/public/providers/[slug]/bookings",
+      "regex": "^/api/public/providers/([^/]+?)/bookings(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/api/public/providers/(?<nxtPslug>[^/]+?)/bookings(?:/)?$"
+    },
+    {
       "page": "/api/resources/[resourceId]",
       "regex": "^/api/resources/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -90,6 +106,14 @@
         "nxtPslug": "nxtPslug"
       },
       "namedRegex": "^/providers/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/providers/[slug]/book",
+      "regex": "^/providers/([^/]+?)/book(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/providers/(?<nxtPslug>[^/]+?)/book(?:/)?$"
     },
     {
       "page": "/resources/[resourceId]",

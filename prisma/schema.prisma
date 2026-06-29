@@ -54,6 +54,14 @@ enum EngagementStatus {
   CANCELLED
 }
 
+enum BookingStatus {
+  REQUESTED
+  CONFIRMED
+  DECLINED
+  CANCELLED
+  CONVERTED
+}
+
 model Account {
   id        String      @id @default(uuid())
   type      AccountType
@@ -68,6 +76,7 @@ model Account {
   skills    Skill[]
   engagements Engagement[]
   providerReviews ProviderReview[]
+  bookingRequests BookingRequest[]
 }
 
 model UserProfile {
@@ -170,6 +179,7 @@ model Resource {
   engagements    Engagement[]
   publicServices ProviderService[]
   reviews        ProviderReview[]
+  bookingRequests BookingRequest[]
 
   @@index([accountId, status])
   @@index([accountId, isActive])
@@ -276,6 +286,7 @@ model ProviderService {
   updatedAt   DateTime @updatedAt
 
   resource    Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  bookingRequests BookingRequest[]
 
   @@index([resourceId])
 }
@@ -296,4 +307,32 @@ model ProviderReview {
 
   @@index([accountId])
   @@index([resourceId, isPublished])
+}
+
+model BookingRequest {
+  id             String        @id @default(uuid())
+  accountId      String
+  resourceId     String
+  providerServiceId String?
+  status         BookingStatus @default(REQUESTED)
+  clientName     String
+  clientEmail    String
+  clientPhone    String?
+  serviceName    String
+  requestedStart DateTime
+  requestedEnd   DateTime?
+  locationLabel  String?
+  notes          String?
+  source         String        @default("public_profile")
+  engagementId   String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  account        Account       @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  resource       Resource      @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  providerService ProviderService? @relation(fields: [providerServiceId], references: [id], onDelete: SetNull)
+
+  @@index([accountId, status])
+  @@index([resourceId, requestedStart])
+  @@index([clientEmail])
 }

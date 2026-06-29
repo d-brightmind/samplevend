@@ -71,7 +71,7 @@ export function ProviderProfilePage({ profile }: { profile: PublicProviderProfil
             <p className="mt-2 text-sm text-muted-foreground">Send a request and VendoBird will route the details securely.</p>
             <div className="mt-5 space-y-3">
               <Button className="w-full" asChild>
-                <Link href={`/register?provider=${profile.slug ?? profile.id}`}>
+                <Link href={`/providers/${profile.slug}/book`}>
                   <CalendarCheck className="h-4 w-4" aria-hidden="true" />
                   Book this provider
                 </Link>

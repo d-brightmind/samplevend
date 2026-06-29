@@ -1,19 +1,15 @@
-import { CreditCard, FileText, PlusCircle } from "lucide-react";
 import { AppShell } from "@/components/app/app-shell";
-import { DashboardCard } from "@/components/app/dashboard-card";
-import { EmptyState } from "@/components/app/empty-state";
+import { ClientDashboard } from "@/components/client-dashboard/client-dashboard";
 import { requireRole } from "@/lib/auth/session";
+import { getClientDashboard } from "@/lib/client-dashboard/data";
 
 export default async function ClientPage() {
-  const session = await requireRole(["CLIENT"]);
+  const session = await requireRole(["CLIENT", "ADMIN"]);
+  const dashboard = await getClientDashboard(session);
+
   return (
-    <AppShell session={session} title="Client workspace" description="Request services, track jobs, and review invoices.">
-      <div className="grid gap-4 sm:grid-cols-3">
-        <DashboardCard icon={PlusCircle} label="Requests" value="0" detail="No current service requests." />
-        <DashboardCard icon={FileText} label="History" value="Ready" detail="Completed work will be listed here." />
-        <DashboardCard icon={CreditCard} label="Invoices" value="0" detail="No invoices due." />
-      </div>
-      <EmptyState icon={PlusCircle} title="No service requests yet" description="Once request creation is connected, clients can start and track service work from this page." />
+    <AppShell session={session} title="Client Dashboard" description="Track bookings, providers, messages, service history, and reviews in one place.">
+      <ClientDashboard dashboard={dashboard} />
     </AppShell>
   );
 }

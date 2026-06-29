@@ -317,6 +317,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/api/client-dashboard/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/client-dashboard">> = Specific
+  const handler = {} as typeof import("../../app/api/client-dashboard/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/api/dispatch-map/assign/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/dispatch-map/assign">> = Specific

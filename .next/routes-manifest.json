@@ -44,6 +44,14 @@
       "namedRegex": "^/api/engagements/(?<nxtPengagementId>[^/]+?)/status(?:/)?$"
     },
     {
+      "page": "/api/public/providers/[slug]",
+      "regex": "^/api/public/providers/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/api/public/providers/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/resources/[resourceId]",
       "regex": "^/api/resources/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -74,6 +82,14 @@
         "nxtPengagementId": "nxtPengagementId"
       },
       "namedRegex": "^/engagements/(?<nxtPengagementId>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/providers/[slug]",
+      "regex": "^/providers/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/providers/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
       "page": "/resources/[resourceId]",

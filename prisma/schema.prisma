@@ -67,6 +67,7 @@ model Account {
   resources Resource[]
   skills    Skill[]
   engagements Engagement[]
+  providerReviews ProviderReview[]
 }
 
 model UserProfile {
@@ -149,6 +150,14 @@ model Resource {
   longitude      Decimal?       @db.Decimal(10, 7)
   lastSeenAt     DateTime?
   notes          String?
+  publicSlug     String?
+  publicBio      String?
+  publicHeadline String?
+  serviceArea    String?
+  yearsExperience Int?
+  responseTimeMinutes Int?
+  ratingAverage  Decimal?       @db.Decimal(3, 2)
+  ratingCount    Int            @default(0)
   deactivatedAt DateTime?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
@@ -159,10 +168,13 @@ model Resource {
   availability   ResourceAvailability[]
   statusEvents   ResourceStatusEvent[]
   engagements    Engagement[]
+  publicServices ProviderService[]
+  reviews        ProviderReview[]
 
   @@index([accountId, status])
   @@index([accountId, isActive])
   @@index([userProfileId])
+  @@unique([accountId, publicSlug])
 }
 
 model Engagement {
@@ -250,4 +262,38 @@ model ResourceStatusEvent {
   resource   Resource       @relation(fields: [resourceId], references: [id], onDelete: Cascade)
 
   @@index([resourceId, createdAt])
+}
+
+model ProviderService {
+  id          String   @id @default(uuid())
+  resourceId  String
+  name        String
+  description String?
+  priceLabel  String?
+  durationMinutes Int?
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  resource    Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@index([resourceId])
+}
+
+model ProviderReview {
+  id          String   @id @default(uuid())
+  accountId   String
+  resourceId  String
+  reviewerName String
+  rating      Int
+  comment     String
+  serviceName String?
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  account     Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  resource    Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@index([accountId])
+  @@index([resourceId, isPublished])
 }

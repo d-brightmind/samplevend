@@ -98,7 +98,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/register": {
+    "/verify-email": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -111,8 +111,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/register",
-      "dataRoute": "/register.rsc",
+      "srcRoute": "/verify-email",
+      "dataRoute": "/verify-email.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -146,7 +146,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/verify-email": {
+    "/register": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -159,8 +159,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/verify-email",
-      "dataRoute": "/verify-email.rsc",
+      "srcRoute": "/register",
+      "dataRoute": "/register.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
